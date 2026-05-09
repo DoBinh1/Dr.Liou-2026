@@ -1,6 +1,6 @@
 # HUSTmotor Multimodal Dataset — Exploration & Baselines
 
-Analysis of the HUSTmotor dataset (Zhao et al.) for **Multimodal Fault Diagnosis & Domain Generalization** research under Dr. Liou (HUST, 2026).
+Analysis of the HUSTmotor dataset (Zhao et al.) for **Multimodal Fault Diagnosis & Domain Generalization** .
 
 Source dataset: https://github.com/CHAOZHAO-1/HUSTmotor-multi-modal-dataset
 - 6 health states × 4 working conditions = 24 `.txt` files

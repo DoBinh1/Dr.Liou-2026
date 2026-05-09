@@ -1,7 +1,7 @@
 # TECHNICAL REPORT: HUSTmotor Multimodal Dataset
 ## Multimodal Fault Diagnosis & Domain Generalization
 
-> **Author note**: This report supports the exploration phase of multimodal PHM research under Dr. Liou at HUST. Version v2 adds deeper signal-processing analysis (cepstrum, kurtogram, CWT, WPT, coherence, order tracking) and actual baseline results (XGBoost, WDCNN, DualStreamCNN on three setups: intra-condition, pooled, leave-one-condition-out).
+> **Author note**: This report supports the exploration phase of multimodal PHM research. Version v2 adds deeper signal-processing analysis (cepstrum, kurtogram, CWT, WPT, coherence, order tracking) and actual baseline results (XGBoost, WDCNN, DualStreamCNN on three setups: intra-condition, pooled, leave-one-condition-out).
 
 ---
 
