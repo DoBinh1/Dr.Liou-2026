@@ -1,0 +1,9 @@
+# Heavy artifacts — regenerate via _run_pipeline.py
+raw_cache.npz
+splits.npz
+features_per_segment.csv
+
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

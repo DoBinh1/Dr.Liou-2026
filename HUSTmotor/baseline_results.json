@@ -1,0 +1,131 @@
+{
+  "xgb_intra_condition": {
+    "5Hz": {
+      "acc": 0.9420289855072463,
+      "macro_f1": 0.9423654638514973,
+      "n_train": 336,
+      "n_test": 138
+    },
+    "10Hz": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "n_train": 336,
+      "n_test": 138
+    },
+    "20Hz": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "n_train": 336,
+      "n_test": 138
+    },
+    "30Hz": {
+      "acc": 0.9927536231884058,
+      "macro_f1": 0.992750197005516,
+      "n_train": 336,
+      "n_test": 138
+    }
+  },
+  "xgb_intra_mean_acc": 0.983695652173913,
+  "xgb_pooled": {
+    "acc": 1.0,
+    "macro_f1": 1.0,
+    "n_train": 1344,
+    "n_test": 552
+  },
+  "xgb_loco": {
+    "test_5Hz": {
+      "acc": 0.21308016877637131,
+      "macro_f1": 0.1271070818695098,
+      "n_train": 1422,
+      "n_test": 474
+    },
+    "test_10Hz": {
+      "acc": 0.8143459915611815,
+      "macro_f1": 0.7587286277556743,
+      "n_train": 1422,
+      "n_test": 474
+    },
+    "test_20Hz": {
+      "acc": 0.869198312236287,
+      "macro_f1": 0.8449051894349354,
+      "n_train": 1422,
+      "n_test": 474
+    },
+    "test_30Hz": {
+      "acc": 0.8924050632911392,
+      "macro_f1": 0.8911256969389852,
+      "n_train": 1422,
+      "n_test": 474
+    }
+  },
+  "xgb_loco_mean_acc": 0.6972573839662447,
+  "xgb_loco_worst_acc": 0.21308016877637131,
+  "wdcnn_vib_pooled": {
+    "acc": 0.9930555555555556,
+    "macro_f1": 0.9930525401650022
+  },
+  "wdcnn_ac_pooled": {
+    "acc": 0.8125,
+    "macro_f1": 0.8065178598345056
+  },
+  "dualstream_pooled": {
+    "acc": 1.0,
+    "macro_f1": 1.0
+  },
+  "wdcnn_vib_loco": {
+    "test_5Hz": {
+      "acc": 0.8208955223880597,
+      "macro_f1": 0.8140480262872268
+    },
+    "test_10Hz": {
+      "acc": 1.0,
+      "macro_f1": 1.0
+    },
+    "test_20Hz": {
+      "acc": 0.9701492537313433,
+      "macro_f1": 0.9699634720542751
+    },
+    "test_30Hz": {
+      "acc": 0.7686567164179104,
+      "macro_f1": 0.733587975838094
+    }
+  },
+  "dualstream_loco": {
+    "test_5Hz": {
+      "acc": 0.7562189054726368,
+      "macro_f1": 0.726176417303138
+    },
+    "test_10Hz": {
+      "acc": 0.9552238805970149,
+      "macro_f1": 0.9547297297297298
+    },
+    "test_20Hz": {
+      "acc": 0.9477611940298507,
+      "macro_f1": 0.9466275115397922
+    },
+    "test_30Hz": {
+      "acc": 0.6218905472636815,
+      "macro_f1": 0.5174725454261319
+    }
+  },
+  "wdcnn_vib_loco_mean_acc": 0.8899253731343283,
+  "wdcnn_vib_loco_worst_acc": 0.7686567164179104,
+  "dualstream_loco_mean_acc": 0.820273631840796,
+  "dualstream_loco_worst_acc": 0.6218905472636815,
+  "meta": {
+    "fs": 25600,
+    "window": 4096,
+    "train_overlap": 0.5,
+    "eval_overlap": 0.0,
+    "n_files": 24,
+    "n_classes": 6,
+    "conditions": [
+      5,
+      10,
+      20,
+      30
+    ],
+    "device": "cuda",
+    "total_seconds": 64.5
+  }
+}
