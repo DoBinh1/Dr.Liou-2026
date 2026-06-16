@@ -102,7 +102,7 @@ The electricity consumption by load application type in Motor-Driven Systems (MD
 ![Figure 9: MDS electricity consumption by application (IEA) and motor technology market share by domain](figures/motor_applications_and_market_share_en.png)
 
 #### 1. Electricity Consumption by Application Type (MDS End-Use):
-*   **Hệ thống Turbomachinery (Bơm, Quạt, Máy nén khí):** These account for **70% of all motor-system energy usage** (representing roughly 37% of global electricity consumption).
+*   **Turbomachinery Systems (Pumps, Fans, Compressors):** These account for **70% of all motor-system energy usage** (representing roughly 37% of global electricity consumption).
     *   **Compressors:** Consume **32%** of motor energy. This includes industrial air compressors, commercial refrigeration, and cooling compressors in HVAC systems.
     *   **Pumps:** Consume **19%** of motor energy. These are critical in water treatment plants, cooling water circulation loops, and chemical/petroleum pipelines.
     *   **Fans:** Consume **19%** of motor energy. These drive industrial blowers, boiler exhaust fans, ventilation systems, and cooling towers.
@@ -443,7 +443,7 @@ Diagnosing electric motor faults in actual industrial environments remains a hig
 
 *   **CH1 — Low Signal-to-Noise Ratio (Low SNR):** Incipient-stage bearing defects release minute amounts of energy (on the scale of micro-Joules per impact). The resulting vibration and acoustic emission signatures are typically drowned out by background factory noise, structural floor vibrations, and neighboring machinery. Extracting these weak signals requires computationally expensive filtering algorithms (e.g., Wavelet transforms or Variational Mode Decomposition).
 *   **CH2 — Non-Stationary Signals under Variable Speed/Load:** Modern motors frequently operate with Variable Frequency Drives (VFDs) where the shaft speed ($f_r$) is continuously adjusted. When $\frac{d f_r(t)}{dt} \neq 0$, the characteristic fault frequencies slide across the spectrum, causing "spectral smearing." This violates the stationarity assumption of standard fast Fourier transforms (FFT), rendering them ineffective.
-*   **CH3 — Structural Domain Shift:** Every motor installation has a unique Frequency Response Function ($H_{FRF}(f)$) governed by bệ đỡ (baseplates), casing geometry, and sensor mounting. The observed sensor signal $Y(f)$ is a filtered version of the raw physical fault source $X_{fault}(f)$:
+*   **CH3 — Structural Domain Shift:** Every motor installation has a unique Frequency Response Function ($H_{FRF}(f)$) governed by baseplates, casing geometry, and sensor mounting. The observed sensor signal $Y(f)$ is a filtered version of the raw physical fault source $X_{fault}(f)$:
     $$Y(f) = H_{FRF}(f) \cdot X_{fault}(f)$$
     As a result, a diagnostic model trained on one machine will drop significantly in accuracy when deployed on an identical motor elsewhere due to this domain shift.
 *   **CH4 — Extreme Data Imbalance:** In production plants, machines are operated in healthy states for more than 99% of their lifespan. Actual fault data is extremely scarce. This extreme imbalance causes deep learning models to become biased toward the healthy class, leading to false negatives (missed faults) during operation.
