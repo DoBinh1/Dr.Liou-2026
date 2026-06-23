@@ -523,12 +523,18 @@ The historical evolution and future directions of rotating machinery health moni
 1.  **MM-HCAN (Multimodal Hypergraph Contrastive Attention Network) [22]:**
     *   *Concept:* Models multi-modal features as a **Hypergraph**. A hyperedge can connect multiple feature nodes from both current and vibration modalities.
     *   *Strength:* Captures complex, high-order non-Euclidean relationships between current and vibration under varying speed and load profiles. Contrastive learning helps distinguish faults with overlapping spectra (e.g., misalignment vs. bent shaft).
+
+    ![Figure 9.2: Architectural diagram of Multimodal Hypergraph Contrastive Attention Network (MM-HCAN) [22]](figures/mm_hcan_architecture.png)
 2.  **DAMFM-MD (Dual-Attentive Multimodal Fusion Method) [20]:**
     *   *Architecture:* Employs three parallel feature extraction branches: raw time-series (1D CNN), frequency spectra (1D CNN), and time-frequency spectrograms (2D CNN).
     *   *Fusion:* Utilizes a **Dual-Attention** mechanism consisting of *Channel Attention* (focusing on key sensors) and *Spatial Attention* (focusing on transient impacts or sideband regions).
+
+    ![Figure 9.3: Overall framework and cross-scale attention fusion in Dual-Attentive Multimodal Fusion Method (DAMFM-MD) [20]](figures/damfm_md_architecture.png)
 3.  **FAN-BD (Fusion Attention Network for Bearing Diagnosis) [21]:**
     *   *Process:* Transforms vibration and current data into STFT spectrograms, then feeds them through strong backbones like **Vision Transformers (ViT)** or **ConvNeXt**.
     *   *Fusion:* Employs a **Channel-Based Multi-Head Attention (CBMA)** block to compute cross-attention between current and vibration spectrogram features.
+
+    ![Figure 9.4: Multimodal fusion and CBMA mechanism in Fusion Attention Network for Bearing Diagnosis (FAN-BD) [21]](figures/fan_bd_architecture.png)
 
 ---
 
