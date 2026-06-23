@@ -525,16 +525,16 @@ The historical evolution and future directions of rotating machinery health moni
     *   *Strength:* Captures complex, high-order non-Euclidean relationships between current and vibration under varying speed and load profiles. Contrastive learning helps distinguish faults with overlapping spectra (e.g., misalignment vs. bent shaft).
 
     ![Figure 9.2: Architectural diagram of Multimodal Hypergraph Contrastive Attention Network (MM-HCAN) [22]](figures/mm_hcan_architecture.png)
-2.  **DAMFM-MD (Dual-Attentive Multimodal Fusion Method) [20]:**
-    *   *Architecture:* Employs three parallel feature extraction branches: raw time-series (1D CNN), frequency spectra (1D CNN), and time-frequency spectrograms (2D CNN).
-    *   *Fusion:* Utilizes a **Dual-Attention** mechanism consisting of *Channel Attention* (focusing on key sensors) and *Spatial Attention* (focusing on transient impacts or sideband regions).
+2.  **CAVFNet (Current-Aided Vibration Fusion Network) [20]:**
+    *   *Architecture:* Decomposes raw vibration and current signals into 2-D time-frequency matrices via Wavelet Packet Decomposition (WPD) representing key fault frequency bands.
+    *   *Fusion:* Employs a **Current-Aided Fusion Module (CAFM)** where feature maps extracted from stator currents serve as spatial/spectral incentive weights to adaptively reweight and highlight vibration feature regions most sensitive to defects.
 
-    ![Figure 9.3: Overall framework and cross-scale attention fusion in Dual-Attentive Multimodal Fusion Method (DAMFM-MD) [20]](figures/damfm_md_architecture.png)
-3.  **FAN-BD (Fusion Attention Network for Bearing Diagnosis) [21]:**
-    *   *Process:* Transforms vibration and current data into STFT spectrograms, then feeds them through strong backbones like **Vision Transformers (ViT)** or **ConvNeXt**.
-    *   *Fusion:* Employs a **Channel-Based Multi-Head Attention (CBMA)** block to compute cross-attention between current and vibration spectrogram features.
+    ![Figure 9.3: Structural diagram of Current-Aided Vibration Fusion Network (CAVFNet) [20]](figures/replacement_fusion_1.png)
+3.  **PCA-MSF-ResNet (Principal Component Analysis Multi-Sensor Fusion Residual Network) [21]:**
+    *   *Concept:* Performs feature-level fusion by applying **Principal Component Analysis (PCA)** to raw resampled vibration and current signals to extract the top three dominant components.
+    *   *Process:* Converts these components into a unified 3-channel 2D pixel matrix (RGB format) which is then classified by a robust CNN with residual blocks and Leaky ReLU activations.
 
-    ![Figure 9.4: Multimodal fusion and CBMA mechanism in Fusion Attention Network for Bearing Diagnosis (FAN-BD) [21]](figures/fan_bd_architecture.png)
+    ![Figure 9.4: Multisensor fusion workflow and PCA-MSF-ResNet network structure [21]](figures/replacement_fusion_2.png)
 
 ---
 
@@ -779,9 +779,9 @@ The literature demonstrates that adopting predictive maintenance (PdM) powered b
 
 **[19]** J. Moubray, *Reliability-Centered Maintenance*, 2nd ed. Industrial Press Inc., 1997. ISBN: 978-0831131821.
 
-**[20]** Y. Chu, L. Zhu, and M. Lu, "A Dual-Attentive Multimodal Fusion Method for Fault Diagnosis Under Varying Working Conditions," *Mathematics*, vol. 13, no. 11, p. 1868, 2025. doi: 10.3390/math13111868.
+**[20]** R. Zhao, G. Jiang, Q. He, X. Jin, and P. Xie, "Current-Aided Vibration Fusion Network for Fault Diagnosis in Electromechanical Drive System," *IEEE Transactions on Instrumentation and Measurement*, vol. 73, Art. no. 3510010, pp. 1-10, 2024. doi: 10.1109/TIM.2024.3363791.
 
-**[21]** J. Yang, H. Han, X. Dong, G. Wang, and S. Zhang, "Bearing Fault Diagnosis Grounded in the Multi-Modal Fusion and Attention Mechanism," *Applied Sciences*, vol. 15, no. 3, p. 1531, 2025. doi: 10.3390/app15031531.
+**[21]** T. Xie, X. Huang, and S.-K. Choi, "Intelligent Mechanical Fault Diagnosis Using Multisensor Fusion and Convolution Neural Network," *IEEE Transactions on Industrial Informatics*, vol. 18, no. 5, pp. 3213-3223, 2022. doi: 10.1109/TII.2021.3102017.
 
 **[22]** U. Ali, A. Zia, W. Ali, U. Ramzan, A. Rehman, M. T. Chaudhry, and W. Xiang, "Hypergraph Contrastive Sensor Fusion for Multimodal Fault Diagnosis in Induction Motors," *IEEE Sensors Journal*, 2026. doi: 10.1109/JSEN.2026.1234567 (arXiv:2510.15547).
 
