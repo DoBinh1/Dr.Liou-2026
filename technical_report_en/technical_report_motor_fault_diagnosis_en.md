@@ -409,11 +409,11 @@ As a motor degrades, the timeline from fault initiation to failure exhibits dist
 
 | Degradation Stage | Physical Symptoms & Description | Primary Detection Methods | Relative Intervention Cost |
 |---|---|---|---|
-| **Latent** (0–5%) | Micro-structural damage, no external symptoms. | Ultrasonic Acoustic Emission, Deep AI models | Very Low ($) |
-| **Early** (5–20%) | Weak fault signatures. No thermal or auditory changes. | High-frequency vibration, MCSA, current negative-sequence | Low ($$) |
-| **Medium** (20–60%) | Clear, diagnostic signatures. Minor noise/vibration. | Standard vibration spectra, dynamic modeling | Medium ($$$) |
-| **Critical** (60–90%) | High heat, severe vibration, audible noise. | Temperature RTDs, handheld thermal cameras, audio | High ($$$$) |
-| **Catastrophic** (>90%) | Winding burnout, locked rotor, structural failure. | All sensors (too late to save) | Very High ($$$$$) |
+| **Latent** (0–5%) | Micro-structural damage, no external symptoms. | Ultrasonic Acoustic Emission, Deep AI models | Very Low (\$) |
+| **Early** (5–20%) | Weak fault signatures. No thermal or auditory changes. | High-frequency vibration, MCSA, current negative-sequence | Low (\$\$) |
+| **Medium** (20–60%) | Clear, diagnostic signatures. Minor noise/vibration. | Standard vibration spectra, dynamic modeling | Medium (\$\$\$) |
+| **Critical** (60–90%) | High heat, severe vibration, audible noise. | Temperature RTDs, handheld thermal cameras, audio | High (\$\$\$\$) |
+| **Catastrophic** (>90%) | Winding burnout, locked rotor, structural failure. | All sensors (too late to save) | Very High (\$\$\$\$\$) |
 
 > [!TIP]
 > **The Golden Rule of PdM:** Intervening during the early stage (5–20% degradation) yields a **10× to 40× reduction in repair and downtime costs** compared to waiting for critical or catastrophic failure [19].
