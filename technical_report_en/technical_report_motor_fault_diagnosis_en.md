@@ -682,7 +682,7 @@ The major research gaps in the literature are summarized below:
 - **Methodology:** Train on normal and high-severity data, test on early-stage faults (using Qatar 2025 multi-severity recordings at 5%, 10%, 20%). Measure false alarm rates at 95% confidence intervals.
 
 #### Phase 4 — Hardware Simulation Test Rig Setup
-- **Main Goal:** Build a physical test rig at the HUST laboratory to collect high-quality, real-world data and validate algorithms under industrial noise.
+- **Main Goal:** Build a physical test rig at the laboratory to collect high-quality, real-world data and validate algorithms under industrial noise.
 - **Verification Target:** Serves as the final physical verification for all **5 Directions** and addresses the **Complexity Paradox (Section 10.1.6)** under realistic, noisy environments.
 
 **Proposed Test Rig Configuration:**
