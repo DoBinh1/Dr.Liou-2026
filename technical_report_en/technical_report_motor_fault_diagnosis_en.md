@@ -78,7 +78,7 @@ This reality has driven decades of research into **condition monitoring (CM)** a
 
 ### 📊 2.1 Global Energy Statistics
 
-Electric motors are the single largest consumer of electricity in the global economy. According to the International Energy Agency (IEA 4E EMSA - 2025), electric motor-driven systems (MDS) account for approximately **53% of global electricity consumption** [1]. This underscores their central role in both energy demand and carbon emission reduction strategies.
+Electric motors are the single largest consumer of electricity in the global economy. According to the International Energy Agency (IEA 4E EMSA - 2025), electric motor-driven systems (MDS) account for approximately **53% of global electricity consumption** [29]. This underscores their central role in both energy demand and carbon emission reduction strategies.
 
 The global distribution of electricity end-use and the sector-specific shares of electricity consumed by motor systems are illustrated below:
 
@@ -88,14 +88,13 @@ The following table summarizes key energy statistics and the operational scale o
 
 | Indicator | Value | Detailed Sector / Context | Data Source |
 |---|---|---|---|
-| **Global Electricity Consumption Share** | **53%** | All electric motor-driven systems (MDS) combined | IEA 4E EMSA 2025 [1] |
-| **Electricity Share in Industry** | **72%** | Drives for pumps, fans, compressors, conveyors, machine tools | IEA 4E EMSA 2025 [1] |
-| **Electricity Share in Agriculture** | **87%** | Irrigation pumps, grinders, agricultural processing machinery | IEA 4E EMSA 2025 [1] |
-| **Electricity Share in Transportation** | **86%** | Electric Vehicles (EVs), high-speed rail, subways | IEA 4E EMSA 2025 [1] |
-| **Electricity Share in Buildings** | **36%** | HVAC systems, elevators, water pumps, cooling compressors | IEA 4E EMSA 2025 [1] |
+| **Global Electricity Consumption Share** | **53%** | All electric motor-driven systems (MDS) combined | IEA 4E EMSA 2025 [29] |
+| **Electricity Share in Industry** | **72%** | Drives for pumps, fans, compressors, conveyors, machine tools | IEA 4E EMSA 2025 [29] |
+| **Electricity Share in Agriculture** | **87%** | Irrigation pumps, grinders, agricultural processing machinery | IEA 4E EMSA 2025 [29] |
+| **Electricity Share in Transportation** | **86%** | Electric Vehicles (EVs), high-speed rail, subways | IEA 4E EMSA 2025 [29] |
+| **Electricity Share in Buildings** | **36%** | HVAC systems, elevators, water pumps, cooling compressors | IEA 4E EMSA 2025 [29] |
 | **Industrial Rotating Equipment Share** | **85%** | Squirrel-cage induction motors (IM) | Bangash et al. [2] |
-| **Reliability Survey Sample Size** | **114,100 motors**| Collected across 75 heavy industrial plants | Dehnavi & Shafiee [1] |
-| **Average Motor Density** | **1,521 motors/plant**| Indication of extreme industrial dependence on motors | Dehnavi & Shafiee [1] |
+| **IEEE 493 Survey Sample** | **~1,141 large motors** | 304 recorded failures across multi-site industrial survey | IEEE Std 493-2007 Appendix H [30] |
 
 ---
 
@@ -105,9 +104,9 @@ Electric motors drive a vast array of systems, ranging from low-power consumer a
 
 The electricity consumption by load application type in Motor-Driven Systems (MDS) and the global market shares of primary motor technologies (Induction Motors, PMSMs, and others like BLDC, DC, EESM) are shown below:
 
-![Figure 9: MDS electricity consumption by application (IEA) and motor technology market share by domain [1]](figures/motor_applications_and_market_share_en.png)
+![Figure 9: MDS electricity consumption by application (IEA) and motor technology market share by domain [29]](figures/motor_applications_and_market_share_en.png)
 
-#### 1. Electricity Consumption by Application Type (MDS End-Use) [1]:
+#### 1. Electricity Consumption by Application Type (MDS End-Use) [29]:
 *   **Turbomachinery Systems (Pumps, Fans, Compressors):** These account for **70% of all motor-system energy usage** (representing roughly 37% of global electricity consumption).
     *   **Compressors:** Consume **32%** of motor energy. This includes industrial air compressors, commercial refrigeration, and cooling compressors in HVAC systems.
     *   **Pumps:** Consume **19%** of motor energy. These are critical in water treatment plants, cooling water circulation loops, and chemical/petroleum pipelines.
@@ -131,26 +130,26 @@ Industrial decarbonization and efficiency mandates (IE4/IE5 standards) are resha
 
 ### 📊 3.1 Statistical Distribution of Faults (IEEE Std 493-2007 vs. Modern Academic Consensus 2020-2026)
 
-Developing an effective predictive maintenance (PdM) strategy requires understanding the statistical probability of failures across different motor subcomponents. Modern research utilizes standardized statistics from the **IEEE Std 493-2007 (IEEE Gold Book)** [1] combined with **Modern Academic Consensus (2020-2026)** [14, 15] obtained from large-scale surveys.
+Developing an effective predictive maintenance (PdM) strategy requires understanding the statistical probability of failures across different motor subcomponents. Modern research utilizes standardized statistics from the **IEEE Std 493-2007 (IEEE Gold Book)** [30] combined with **Modern Academic Consensus (2020-2026)** [14, 15] obtained from large-scale surveys. Note: IEEE Std 493-2007 was based on a survey of approximately 1,141 large motors across multiple industrial installations (304 recorded failures); it has since been superseded by IEEE Std 3006.8-2018, though its fault distribution data remains widely referenced.
 
 The chart below compares the failure distribution from these sources:
 
-![Figure 8: Comparison of Motor Fault Distribution: IEEE Std 493-2007 vs. Academic Consensus (2020-2026) [1, 14, 15]](figures/motor_fault_statistics_en.png)
+![Figure 8: Comparison of Motor Fault Distribution: IEEE Std 493-2007 vs. Academic Consensus (2020-2026) [30, 14, 15]](figures/motor_fault_statistics_en.png)
 
-The table below provides a detailed breakdown of failure categories, physical causes, and optimal diagnostic modalities [1, 2]:
+The table below provides a detailed breakdown of failure categories, physical causes, and optimal diagnostic modalities [30, 2]:
 
 | Fault Category (Component) | IEEE Std 493 Share (%) | Academic Consensus (2020-2026) (%) | Primary Degradation & Physical Mechanisms | Most Sensitive Sensor Channel |
 |---|---|---|---|---|
-| **Bearing Faults** | **51%** | **50% – 60%** | Subsurface Hertzian fatigue, lubrication starvation, abrasive wear, shaft EDM currents causing fluting [8, 10] | Vibration (acceleration) [1, 10], Acoustic Emission (AE) [10], Temperature |
+| **Bearing Faults** | **51%** | **50% – 60%** | Subsurface Hertzian fatigue, lubrication starvation, abrasive wear, shaft EDM currents causing fluting [8, 10] | Vibration (acceleration) [30, 10], Acoustic Emission (AE) [10], Temperature |
 | **Stator Winding Faults**| **25%** | **25% – 30%** | Insulation degradation due to TEAM stresses, turn-to-turn (ITSC) or coil-to-coil (ICSC) short circuits [4, 7] | Negative-sequence current [11], Leakage flux [12], Partial Discharge [4] |
-| **Shaft / Coupling Faults**| **6%** | **5% – 10%** | Parallel/angular misalignment, dynamic imbalance, shaft bending, fatigue cracking [1] | Vibration (displacement/velocity at $1f_r, 2f_r$) [1] |
+| **Shaft / Coupling Faults**| **6%** | **5% – 10%** | Parallel/angular misalignment, dynamic imbalance, shaft bending, fatigue cracking [30] | Vibration (displacement/velocity at $1f_r, 2f_r$) [30] |
 | **Rotor / Bar Faults** | **3%** | **3% – 5%** | Broken rotor bars (BRB), end-ring cracking due to startup thermal stress and cyclic Lorentz forces [10] | Stator current (MCSA sidebands $(1\pm2s)f_s$) [10] |
 | **Others & External** | **15%** | **10% – 15%** | Power supply anomalies (phase imbalance, harmonics), environmental contamination, overload | Power quality monitoring [13], Temperature, Current |
 
-#### In-Depth Analysis of Failure Distribution Shifts in Modern Industry [1, 14, 15]:
+#### In-Depth Analysis of Failure Distribution Shifts in Modern Industry [30, 14, 15]:
 
 1.  **VFD Impact on Bearing Failures:**
-    *   In the **IEEE Std 493-2007** survey, bearing failures represent **51%** of all faults. Modern consensus elevates this to **50% - 60%**.
+    *   In the **IEEE Std 493-2007** survey (Appendix H, ~1,141 motors sampled), bearing failures represent **51%** of all faults. Modern consensus elevates this to **50% - 60%**.
     *   The primary driver is the widespread adoption of variable frequency drives (VFDs). High-frequency common-mode voltages from VFDs induce capacitive shaft currents that discharge through the bearing oil film (EDM currents). This micro-arcing melts the metal, creating parallel fluting ridges along the raceways, leading to rapid bearing degradation compared to classic mechanical wear.
 2.  **Stator Fault Voltage Level Discrepancies:**
     *   Stator winding failures average **25%** across general motor installations.
@@ -347,10 +346,10 @@ The three types of looseness are illustrated below:
 
 Sudden motor failures, especially of large or critical motors, instantly halt downstream production lines. The recovery timeline consists of several phases:
 
-![Figure 10: Sudden motor failure downtime timeline and recovery process (Source: IEEE Std 493) [1]](figures/downtime_analysis_en.png)
+![Figure 10: Sudden motor failure downtime timeline and recovery process (Source: IEEE Std 493) [30]](figures/downtime_analysis_en.png)
 
 > [!WARNING]
-> According to IEEE Std 493 [1], the average downtime for a motor failure is **42 to 75 hours**. In continuous processes (refining, chemical, glass, steel, food), sudden stops can **ruin entire product batches**, solidify pipeline contents, and damage auxiliary machinery.
+> According to IEEE Std 493 [30], motor failure recovery involves multiple sequential phases: detection, logistics, disassembly, repair/rewind or replacement, reassembly, and recommissioning. Depending on motor size, spare part availability, and process criticality, total downtime typically ranges **from several hours to multiple days**. In continuous processes (refining, chemical, glass, steel, food), sudden stops can **ruin entire product batches**, solidify pipeline contents, and damage auxiliary machinery.
 
 ---
 
@@ -382,7 +381,7 @@ graph LR
     style D fill:#ff6666,color:#fff
 ```
 
-The table below compares the economic aspects of different maintenance strategies [1]:
+The table below compares the economic aspects of different maintenance strategies [30]:
 
 | Comparison Criteria | Corrective Maintenance (Run-to-Failure) | Periodic Maintenance (Time-based) | Predictive Maintenance (PdM / Condition-based) |
 |---|---|---|---|
@@ -723,13 +722,13 @@ The major research gaps in the literature are summarized below:
 
 Electric motors are the foundational drive units of modern industrial society, converting over half of all global electricity into mechanical work. Their ubiquity across manufacturing, public infrastructure, energy networks, and safety-critical transportation systems elevates motor reliability from a routine maintenance concern to a macroeconomic and safety priority.
 
-The literature demonstrates that adopting predictive maintenance (PdM) powered by multi-modal condition monitoring is the most effective way to eliminate catastrophic, unscheduled downtime (which averages 42 to 75 hours per event). The maturation of hybrid deep learning architectures like **LeNet-5-LSTM** [7] and interpretable **Deep Unfolding Networks** [17] has pushed diagnostic accuracy beyond 99%, even for complex electrical faults like inter-coil (ICSC) and inter-turn (ITSC) winding shorts.
+The literature demonstrates that adopting predictive maintenance (PdM) powered by multi-modal condition monitoring is the most effective way to eliminate catastrophic, unscheduled downtime (which can range from several hours to multiple days depending on motor size and criticality). The maturation of hybrid deep learning architectures like **LeNet-5-LSTM** [7] and interpretable **Deep Unfolding Networks** [17] has pushed diagnostic accuracy beyond 99%, even for complex electrical faults like inter-coil (ICSC) and inter-turn (ITSC) winding shorts.
 
 ---
 
 ### 11.2 Key Takeaways
 
-*   **Macroeconomic Impact:** Motor-driven systems consume **53% of global electricity** (rising to **72% in industry**). Unscheduled failures cost between **$10,000 and $100,000 per hour**, typically causing **42 to 75 hours of downtime**.
+*   **Macroeconomic Impact:** Motor-driven systems consume **53% of global electricity** [29] (rising to **72% in industry**). Unscheduled failures cost between **$10,000 and $100,000 per hour**, with total downtime ranging from hours to days depending on motor size, spare availability, and plant criticality [30].
 *   **Primary Fault Zones:** Bearings (**50-60%**) and stator windings (**25-30%**) account for nearly 80% of all failures. The proportion of stator failures increases significantly in high-voltage industrial applications due to steep electrical field stresses.
 *   **Fault Physics Contrasts:** 
     *   *ITSC* occurs inside a single coil, causing high localized circulating currents ($I_{sc}$) and rapid insulation melting.
@@ -742,6 +741,10 @@ The literature demonstrates that adopting predictive maintenance (PdM) powered b
 ## 12. References
 
 **[1]** V. S. Dehnavi and M. Shafiee, "Fault diagnosis of induction motors using novel measurement techniques and data fusion," *Measurement*, vol. 256, p. 118135, 2025. doi: 10.1016/j.measurement.2025.118135.
+
+**[29]** IEA 4E Electric Motor Systems Annex (EMSA), "Electric Motor Systems: Why Are They Important?" *EMSA Policy Brief No. 9*, International Energy Agency, December 2025. [Online]. Available: https://www.iea-4e.org/emsa/
+
+**[30]** IEEE, *IEEE Std 493-2007: IEEE Recommended Practice for the Design of Reliable Industrial and Commercial Power Systems (IEEE Gold Book)*, New York: IEEE, 2007. [Note: Superseded by IEEE Std 3006.8-2018; motor fault distribution data from Appendix H, ~1,141 motors surveyed, 304 recorded failures.]
 
 **[2]** M. F. Bangash, A. Arif, M. Hanif, A. Khalil, and A. Imran, "AI based multi-signals fault diagnosis of induction motor," *IEEE Access*, 2025. doi: 10.1109/ACCESS.2025.3638716.
 
@@ -783,6 +786,6 @@ The literature demonstrates that adopting predictive maintenance (PdM) powered b
 
 **[21]** T. Xie, X. Huang, and S.-K. Choi, "Intelligent Mechanical Fault Diagnosis Using Multisensor Fusion and Convolution Neural Network," *IEEE Transactions on Industrial Informatics*, vol. 18, no. 5, pp. 3213-3223, 2022. doi: 10.1109/TII.2021.3102017.
 
-**[22]** U. Ali, A. Zia, W. Ali, U. Ramzan, A. Rehman, M. T. Chaudhry, and W. Xiang, "Hypergraph Contrastive Sensor Fusion for Multimodal Fault Diagnosis in Induction Motors," *IEEE Sensors Journal*, 2026. doi: 10.1109/JSEN.2026.1234567 (arXiv:2510.15547).
+**[22]** U. Ali, A. Zia, W. Ali, U. Ramzan, A. Rehman, M. T. Chaudhry, and W. Xiang, "Hypergraph Contrastive Sensor Fusion for Multimodal Fault Diagnosis in Induction Motors," *IEEE Sensors Journal*, 2025. doi: 10.1109/JSEN.2025.3648413 (arXiv:2510.15547).
 
 **[28]** G. E. Karniadakis et al., "Physics-informed machine learning," *Nature Reviews Physics*, vol. 3, pp. 422–440, 2021.
