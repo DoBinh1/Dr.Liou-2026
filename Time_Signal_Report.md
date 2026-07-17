@@ -1,325 +1,233 @@
-# Tín Hiệu Miền Thời Gian — Ảnh Gốc Từ MATLAB
-## 10 Files × 3 Nhóm Cảm Biến (Accelerometer · Current · Voltage)
+# Time-Domain Signal Analysis Report
+## 10 Files × 3 Sensor Groups (Accelerometer · Current · Voltage)
 
-> **Thông số thu thập:**  
-> $f_s$ = **50,000 Hz (50 kHz)** · Thời lượng = **~20 giây/file**  
-> Đơn vị: Gia tốc **(g)** · Dòng điện **(A)** · Điện áp **(V)**  
+> **Data Collection Specifications:**  
+> $f_s$ = **50,000 Hz (50 kHz)** · Duration = **~20 seconds/file**  
+> Units: Acceleration **(g)** · Current **(A)** · Voltage **(V)**  
 >
-> **Quan sát chung:** Tất cả các file đều có **giai đoạn trước khởi động (~0–8 s)** — tín hiệu phẳng, motor chưa chạy. Motor bắt đầu hoạt động từ khoảng **giây thứ 8–9**, sau đó ổn định dần đến cuối file.
+> **General Observation:** All data files exhibit **two distinct phases**:
+> - **Pre-start Idle Phase (~0–8 s):** The motor is not yet powered. All signals are flat (current = 0 A, voltage = 0 V, acceleration = static gravity of 1.0 g on the Z-axis).
+> - **Running Phase (~8–20 s):** The motor starts and runs. A large inrush startup current (~2–3 A) occurs for 1–2 seconds, followed by steady-state operation.
+>
+> **Important Note:** When training diagnostic models, the pre-start idle phase (~0–8 s) and the startup transient (~8–10 s) should be cropped out. Only the **steady-state phase (~10–20 s)** should be used for feature extraction.
 
 ---
 
-## FILE 1 — Healthy · Normal Operation (No Load)
+## FILE 1 — 🟢 Healthy · Normal Operation (No Load)
 
-````carousel
-### Gia Tốc Rung Động (x, y, Z)
-**Trạng thái cơ sở (baseline):** Động cơ lành, không tải.
-
-- **Giai đoạn dừng (0–8 s):** x và y gần phẳng (~0 g), Z ≈ 1.0 g (trọng trường tĩnh).
-- **Sau khởi động (~8 s):** x dao động ±0.03 g, y ±0.04 g, Z biến động 0.95–1.05 g.
-- Tín hiệu ổn định, không có xung đột biến — **đây là hành vi bình thường** của động cơ lành không tải.
+### 1. Accelerometer (x, y, Z)
+* **Baseline State:** Healthy motor under no load.
+* **Idle Period (0–8 s):** x and y are flat (~0 g); Z ≈ 1.0 g (static gravity).
+* **Running Period (>8 s):** x oscillates ±0.03 g, y ±0.04 g, Z fluctuates between 0.95 and 1.05 g.
+* **Observation:** The signals are stable with no abnormal impulses, indicating normal baseline operation.
 
 ![File 1 – Accelerometer](27216219/File 1_acc.png)
 
-<!-- slide -->
-### Dòng Điện (I1, I2, I3)
-- **Giai đoạn dừng:** Ba pha gần bằng 0 A — motor chưa được cấp điện.
-- **Khởi động (~8 s):** Dòng khởi động (inrush) lên tới ~2–3 A, giảm dần exponential trong ~1–2 s.
-- **Trạng thái ổn định:** I1, I2, I3 dao động sin đối xứng, biên độ nhỏ (~0.1 A peak) — motor không tải tiêu thụ ít dòng.
-- Ba pha **cân bằng tốt** — peak của mỗi pha gần bằng nhau.
+### 2. Current (I1, I2, I3)
+* **Idle Period (0–8 s):** All three phases are 0 A.
+* **Startup Transient (~8 s):** Inrush current peaks at ~2 A and decays exponentially within 1 s.
+* **Running Period (>8 s):** Sinusoidal waves with small amplitude (~0.1 A peak) as the motor runs without mechanical load.
+* **Observation:** The three phases are well-balanced with equal peak values.
 
 ![File 1 – Current](27216219/File 1_cur.png)
 
-<!-- slide -->
-### Điện Áp (V1, V2, V3)
-- **Giai đoạn dừng:** V1, V2, V3 ≈ 0 V — chưa có điện.
-- **Sau khởi động:** Điện áp sin ±380 V đầy đủ, ba pha lệch pha 120°.
-- Điện áp **ổn định hoàn toàn** trong suốt thời gian vận hành — nguồn cấp chất lượng tốt.
+### 3. Voltage (V1, V2, V3)
+* **Idle Period (0–8 s):** Voltage is 0 V.
+* **Running Period (>8 s):** Balanced three-phase sinusoidal voltage at ±380 V peak, shifted by 120°.
+* **Observation:** The voltage remains extremely stable throughout the running phase, indicating a clean power supply.
 
 ![File 1 – Voltage](27216219/File 1_voltage.png)
-````
 
 ---
 
-## FILE 2 — Healthy · Phase Removal During Operation (No Load)
+## FILE 2 — 🟢 Healthy · Phase Removal During Operation (No Load)
 
-````carousel
-### Gia Tốc Rung Động
-- Giai đoạn ổn định trước sự kiện: rung động tương tự F1.
-- **Khi mất pha:** Rung động tăng đột ngột — mất cân bằng từ trường tạo lực hướng tâm bất đối xứng.
-- Biên độ x, y tăng so với F1 sau sự kiện mất pha.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Vibration levels are identical to File 1 before the phase removal event. Once a phase is disconnected during operation, vibration amplitudes increase due to the unbalanced magnetic pull (UMP) causing rotating asymmetry.
 
 ![File 2 – Accelerometer](27216219/File 2_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Khởi động bình thường (~8 s), dòng inrush rõ ràng.
-- **Sự kiện mất pha:** Một pha bị cắt → hai pha còn lại phải gánh toàn bộ tải → dòng tăng mạnh, mất đối xứng rõ rệt.
-- Dạng sóng dòng điện biến dạng — không còn sin đều đặn.
+### 2. Current (I1, I2, I3)
+* **Observation:** Normal startup at ~8 s. When one phase is disconnected during operation, the current in the disconnected phase drops to 0 A, while the remaining two phases experience a sharp increase in current to compensate for the load, showing severe asymmetry and waveform distortion.
 
 ![File 2 – Current](27216219/File 2_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp lưới vẫn duy trì trên 2 pha còn lại.
-- Pha bị cắt cho thấy điện áp giảm hoặc biến dạng sau sự kiện.
-- Cung cấp bằng chứng trực tiếp về thời điểm và pha nào bị ngắt.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Shows the exact moment of the phase disconnection. The disconnected phase's voltage drops or distorts, while the other two phases maintain grid voltage.
 
 ![File 2 – Voltage](27216219/File 2_voltage.png)
-````
 
 ---
 
-## FILE 3 — Healthy · 0.4 Nm Mechanical Load
+## FILE 3 — 🟢 Healthy · 0.4 Nm Mechanical Load
 
-````carousel
-### Gia Tốc Rung Động
-- Rung động lớn hơn F1 do tải cơ học: x dao động ±0.05 g, y ±0.07 g.
-- Tín hiệu **ổn định và tuần hoàn** — đặc trưng của motor lành với tải ổn định.
-- Không có xung đột biến hay modulation bất thường.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Vibration amplitudes are slightly larger than File 1 due to the mechanical load: x oscillates ±0.05 g, y ±0.07 g. The signal remains stable and periodic, characteristic of a healthy motor under load.
 
 ![File 3 – Accelerometer](27216219/File 3_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng ổn định cao hơn F1 (~0.44 A peak) — phản ánh tải cơ học.
-- Dòng inrush khởi động rõ rệt (~8 s), giảm dần về trạng thái ổn định trong ~2 s.
-- Ba pha cân bằng tốt — **đây là hành vi chuẩn** của motor lành có tải.
+### 2. Current (I1, I2, I3)
+* **Observation:** Startup transient is visible at ~8 s. The steady-state current is higher than File 1 (~0.44 A peak), reflecting the active mechanical torque. The phases remain balanced.
 
 ![File 3 – Current](27216219/File 3_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp lưới ổn định ±380 V, không bị ảnh hưởng bởi tải cơ.
-- Ba pha hoàn toàn đối xứng, lệch 120°.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Stable three-phase sinusoidal voltage at ±380 V peak, unaffected by the mechanical load.
 
 ![File 3 – Voltage](27216219/File 3_voltage.png)
-````
 
 ---
 
-## FILE 4 — Healthy · 0.8 Nm Mechanical Load
+## FILE 4 — 🟢 Healthy · 0.8 Nm Mechanical Load
 
-````carousel
-### Gia Tốc Rung Động
-- Rung động **lớn nhất trong nhóm Healthy**: x ±0.06 g, y ±0.07 g.
-- Biên độ tăng tỉ lệ với tải cơ — nhất quán với F3 (0.4 Nm).
-- Tín hiệu vẫn ổn định, tuần hoàn, không có thành phần bất thường.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Displays the largest vibration in the Healthy group: x ±0.06 g, y ±0.07 g. The amplitude increases proportionally with the load. The signal remains periodic and stable.
 
 ![File 4 – Accelerometer](27216219/File 4_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng peak ~0.7 A — cao nhất trong các điều kiện Healthy.
-- Dòng inrush khởi động lên ~2.5 A, thời gian ổn định ~2 s.
-- Dạng sóng sin đều đặn, ba pha cân bằng — **motor hoạt động tốt dù tải nặng**.
+### 2. Current (I1, I2, I3)
+* **Observation:** Steady-state current peaks at ~0.7 A, which is the highest in the Healthy group. The startup transient peaks at ~2.5 A. Waveforms are sinusoidal and balanced.
 
 ![File 4 – Current](27216219/File 4_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp lưới không thay đổi dù tải tăng gấp đôi — **nguồn cứng (stiff grid)**.
-- Chứng minh rằng điện áp không phải kênh phân biệt tải cơ.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Unaffected by the heavy load, demonstrating a stiff grid supply.
 
 ![File 4 – Voltage](27216219/File 4_voltage.png)
-````
 
 ---
 
-## FILE 5 — Healthy · One Phase Disconnected from Startup
+## FILE 5 — 🟢 Healthy · One Phase Disconnected from Startup
 
-````carousel
-### Gia Tốc Rung Động
-- **Giai đoạn dừng AND sau "khởi động":** Cả hai đều gần phẳng (~0 g).
-- Motor **không tạo được từ trường quay** khi thiếu một pha → không quay → không rung.
-- Đây là tín hiệu rung động **yếu nhất** trong toàn bộ dataset.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Signals are flat (~0 g) before and after the startup command. Because one phase is missing from the start, the motor cannot generate a rotating magnetic field and fails to rotate, resulting in no mechanical vibration.
 
 ![File 5 – Accelerometer](27216219/File 5_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Hai pha còn lại có dòng nhỏ (~0.05 A), pha bị ngắt = 0.
-- **Không có dòng inrush** — motor không khởi động được.
-- Biên độ dòng rất thấp, dạng sóng méo — motor cố gắng tự khởi động nhưng thất bại.
+### 2. Current (I1, I2, I3)
+* **Observation:** No startup current inrush is observed. The disconnected phase carries 0 A, and the remaining two phases carry a very small, distorted current (~0.05 A). The motor stands still.
 
 ![File 5 – Current](27216219/File 5_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Hai pha có điện áp bình thường, **pha bị ngắt ≈ 0 V**.
-- Đây là bằng chứng điện áp trực tiếp xác nhận điều kiện mất pha từ khởi động.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Two phases show normal voltage, while the disconnected phase stays at ~0 V, confirming a pre-start open-circuit fault on phase B.
 
 ![File 5 – Voltage](27216219/File 5_voltage.png)
-````
 
 ---
 
-## FILE 6 — ⚠️ Faulty · Normal Operation (No Load)
+## FILE 6 — 🔴 Faulty · Normal Operation (No Load)
 
-````carousel
-### Gia Tốc Rung Động
-- **So sánh với F1 (cùng điều kiện, Healthy):** Biên độ rung động lớn hơn rõ ràng sau khởi động — x dao động ±0.05 g (F1 chỉ ±0.03 g).
-- Xuất hiện thành phần **tần số cao** (nhiễu dày đặc hơn) trong tín hiệu ổn định.
-- Đây là dấu hiệu sớm của **lỗi rotor** — tạo lực mất cân bằng cơ học nhỏ ngay cả khi không tải.
+### 1. Accelerometer (x, y, Z)
+* **Comparison with File 1 (Healthy No-Load):** The vibration amplitude is visibly larger: x oscillates ±0.05 g (compared to ±0.03 g in File 1), representing a ~68% increase. A dense high-frequency noise is present in the steady-state, which is an early mechanical signature of the rotor fault.
 
 ![File 6 – Accelerometer](27216219/File 6_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng inrush khởi động tương tự F1 nhưng **thời gian ổn định dài hơn**.
-- Dòng ổn định có biên độ hơi cao hơn F1 — hiệu suất điện từ thấp hơn do lỗi.
-- Nhìn kỹ: dạng sóng có **modulation nhỏ** (biên độ dao động không đều) — sideband đặc trưng của broken rotor bar.
+### 2. Current (I1, I2, I3)
+* **Observation:** Inrush transient occurs at ~8 s, but takes longer to settle compared to File 1. The steady-state current is slightly higher than File 1, and subtle amplitude modulations are visible—a characteristic signature of broken rotor bars (BRB).
 
 ![File 6 – Current](27216219/File 6_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp không thay đổi so với F1 — **lỗi rotor không ảnh hưởng điện áp lưới**.
-- Xác nhận: điện áp không phải kênh nhạy cảm với lỗi rotor.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Identical to File 1, indicating that the rotor fault does not distort the grid voltage.
 
 ![File 6 – Voltage](27216219/File 6_voltage.png)
-````
 
 ---
 
-## FILE 7 — ⚠️ Faulty · Phase Removal During Operation (No Load)
+## FILE 7 — 🔴 Faulty · Phase Removal During Operation (No Load)
 
-````carousel
-### Gia Tốc Rung Động
-- Kết hợp **lỗi rotor + mất pha**: rung động cao hơn F2 (Healthy phase removal) đáng kể.
-- Sau sự kiện mất pha: biên độ rung tăng mạnh, không đều — hai yếu tố mất cân bằng cộng chồng.
-- Tín hiệu không còn tuần hoàn đều — bất thường rõ ràng hơn F2.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** The combined effect of the rotor fault and phase removal produces significantly higher vibration levels than File 2 (Healthy phase removal). After the disconnection, the vibration becomes highly irregular and intense.
 
 ![File 7 – Accelerometer](27216219/File 7_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng cao hơn F2 tương ứng — motor lỗi cần dòng lớn hơn để tạo cùng momen.
-- Mất đối xứng pha **nghiêm trọng hơn** F2 — một pha mang tải không đều.
-- Dạng sóng biến dạng mạnh, có thành phần sóng hài bậc cao rõ hơn.
+### 2. Current (I1, I2, I3)
+* **Observation:** The current amplitude is higher than in File 2. Phase asymmetry is more pronounced, and the waveforms show prominent high-frequency harmonic distortion after the phase removal event.
 
 ![File 7 – Current](27216219/File 7_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Pha bị cắt thể hiện rõ qua điện áp.
-- Hai pha còn lại ổn định — nguồn điện không bị ảnh hưởng.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Identical to File 2; clearly marks the phase disconnection event.
 
 ![File 7 – Voltage](27216219/File 7_voltage.png)
-````
 
 ---
 
-## FILE 8 — ⚠️ Faulty · 0.4 Nm Mechanical Load
+## FILE 8 — 🔴 Faulty · 0.4 Nm Mechanical Load
 
-````carousel
-### Gia Tốc Rung Động
-- **So sánh với F3 (Healthy 0.4 Nm):** Biên độ lớn hơn ~60% — lỗi rotor khuếch đại rung động khi có tải.
-- Tín hiệu có dạng **không đều chu kỳ** — đặc trưng của broken rotor bar tạo modulation theo tần số trượt.
-- Thành phần tần số cao dày đặc hơn F3.
+### 1. Accelerometer (x, y, Z)
+* **Comparison with File 3 (Healthy 0.4 Nm):** Vibration is ~60% larger. The rotor fault modulates the vibration envelope at the slip frequency, creating a non-periodic, modulated waveform with dense high-frequency content.
 
 ![File 8 – Accelerometer](27216219/File 8_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng RMS cao hơn F3 **~47%** — motor lỗi tiêu thụ nhiều điện hơn để duy trì cùng tốc độ/tải.
-- **Modulation biên độ rõ ràng**: biên độ sin không đều → sideband broken rotor bar.
-- Mất đối xứng nhỏ giữa I1, I2, I3 — không rõ bằng mắt nhưng thống kê phát hiện được.
+### 2. Current (I1, I2, I3)
+* **Observation:** RMS current is ~47% higher than File 3. The rotor fault degrades efficiency, requiring more current to produce the same torque. Visible low-frequency beating (amplitude modulation) is present, which is the classic broken rotor bar signature.
 
 ![File 8 – Current](27216219/File 8_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp ổn định, không bị ảnh hưởng — nhất quán với các file khác.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Normal balanced ±380 V grid voltage.
 
 ![File 8 – Voltage](27216219/File 8_voltage.png)
-````
 
 ---
 
-## FILE 9 — ⚠️ Faulty · 0.8 Nm Mechanical Load
+## FILE 9 — 🔴 Faulty · 0.8 Nm Mechanical Load
 
-````carousel
-### Gia Tốc Rung Động
-- **Rung động cao nhất toàn dataset**: x dao động ±0.07 g, y ±0.06 g — lớn hơn F4 (Healthy 0.8Nm) ~95%.
-- Tín hiệu có **nhiều tần số chồng chập** — broken rotor bar tạo thêm nhiều thành phần harmonics cơ học.
-- Giai đoạn transient khởi động kéo dài hơn so với Healthy — motor khó đạt trạng thái ổn định.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Exhibits the highest vibration level in the entire dataset: x ±0.07 g, y ±0.06 g (nearly 95% higher than File 4). The signal contains multiple overlapping frequency components, and the startup transient is prolonged.
 
 ![File 9 – Accelerometer](27216219/File 9_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Dòng peak lên đến ~1.0 A (F4 Healthy chỉ ~0.7 A) — **cao nhất trong dataset**.
-- Dòng inrush khởi động cực cao (~3 A), thời gian ổn định kéo dài ~3–4 s (lâu hơn F4).
-- **Modulation biên độ mạnh nhất** trong tất cả 10 file — broken rotor bar ảnh hưởng nghiêm trọng nhất khi tải nặng.
+### 2. Current (I1, I2, I3)
+* **Observation:** Peak steady-state current reaches ~1.0 A (compared to ~0.7 A in File 4). The startup inrush reaches ~3 A and takes 3–4 seconds to stabilize. Strong amplitude modulation is visible, showing that the broken rotor bar fault is highly aggravated under heavy loads.
 
 ![File 9 – Current](27216219/File 9_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Điện áp ổn định ±380 V — xác nhận nguồn điện không phải nguyên nhân gây dòng cao.
-- Điều này loại trừ nguồn điện yếu (voltage sag) là nguyên nhân, và khẳng định lỗi là từ phía motor.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** The voltage remains stable at ±380 V, proving that the high current and prolonged startup are caused by the motor fault rather than a voltage sag.
 
 ![File 9 – Voltage](27216219/File 9_voltage.png)
-````
 
 ---
 
-## FILE 10 — ⚠️ Faulty · One Phase Disconnected from Startup
+## FILE 10 — 🔴 Faulty · One Phase Disconnected from Startup
 
-````carousel
-### Gia Tốc Rung Động
-- Tương tự F5 (Healthy, 1-phase disc.): tín hiệu gần phẳng — motor không quay.
-- **Khác biệt nhỏ so với F5:** Biên độ rung sau "khởi động" hơi lớn hơn một chút — rotor lỗi tạo thêm nhiễu nhỏ ngay cả khi không quay.
-- Cả hai F5 và F10 đều nguy hiểm: motor bị kẹt dưới điện áp đầy đủ → tỏa nhiệt cực cao.
+### 1. Accelerometer (x, y, Z)
+* **Observation:** Similar to File 5, the vibration is mostly flat since the motor cannot rotate. However, tiny fluctuations are slightly larger than File 5 due to the broken rotor bars reacting to the single-phase field.
 
 ![File 10 – Accelerometer](27216219/File 10_acc.png)
 
-<!-- slide -->
-### Dòng Điện
-- Pha bị ngắt = 0 A. Hai pha còn lại mang dòng không đối xứng.
-- **Mất cân bằng pha rõ hơn F5**: I2 gần 0, I1 và I3 chênh lệch — do rotor lỗi cộng thêm mất pha.
-- Đây là điều kiện nguy hiểm nhất — dòng DC chạy qua cuộn dây stato khi motor không quay → nguy cơ cháy cuộn dây cao.
+### 2. Current (I1, I2, I3)
+* **Observation:** Phase B carries 0 A. The other two phases carry unbalanced currents. The asymmetry is more severe than File 5 due to the combined effect of the rotor fault and the disconnected phase. The motor stands still and acts as a pure inductive load.
 
 ![File 10 – Current](27216219/File 10_cur.png)
 
-<!-- slide -->
-### Điện Áp
-- Pha bị ngắt: điện áp ≈ 0 V (xác nhận mất pha B).
-- Hai pha còn lại duy trì điện áp đầy đủ — xác nhận lỗi là ở phía motor/cáp, không phải lưới điện.
+### 3. Voltage (V1, V2, V3)
+* **Observation:** Identical to File 5; confirms phase B is disconnected from startup.
 
 ![File 10 – Voltage](27216219/File 10_voltage.png)
-````
 
 ---
 
-## Tóm Tắt Quan Sát Quan Trọng
+## Summary of Diagnostic Insights
 
-### Giai đoạn khởi động (Startup Transient)
-Tất cả file đều có **giai đoạn không hoạt động ~0–8 s** trước khi motor được cấp điện. Đây là thông tin quan trọng cho việc tiền xử lý dữ liệu:
+### 1. Startup Transient and Pre-start Idle
+All files contain a **pre-start idle phase (~0–8 s)**. The motor is only energized after 8 seconds. This is critical for data preprocessing:
+* **Recommendation:** Crop the first 10 seconds of each file to discard the idle state and the startup inrush transient. Perform steady-state diagnostics on the ~10–20 s window.
 
-> [!IMPORTANT]
-> Khi xây dựng bộ đặc trưng để phân loại, **cần loại bỏ giai đoạn trước khởi động và giai đoạn transient** (~8–10 s đầu). Chỉ sử dụng phần tín hiệu **ổn định (steady-state)** để đảm bảo đặc trưng phản ánh đúng trạng thái vận hành.
+### 2. Modality Sensitivity
+* **Current Signature:** Extremely effective for load estimation (RMS) and broken rotor bar detection (amplitude modulation and sidebands).
+* **Vibration Signature:** Highly sensitive to rotor imbalance and mechanical faults, especially under load (vibration increases by 60–95% under load when a fault is present).
+* **Voltage Signature:** Primarily useful for identifying supply-side faults (phase disconnection) but carries little information about rotor health.
 
-### Điều chỉnh Tần Số Lấy Mẫu
-> [!WARNING]
-> Tần số lấy mẫu chính xác là **$f_s = 50{,}000$ Hz (50 kHz)**, không phải 12,800 Hz như đã phân tích trước đó. Điều này ảnh hưởng đến:
-> - Trục thời gian trong các biểu đồ Python (đã hiển thị sai đơn vị)
-> - Phân giải tần số FFT: $\Delta f = 50000/N_{FFT}$
-> - Dải Nyquist: lên đến **25,000 Hz** — đủ bắt các harmonics cơ học tần số cao của vòng bi và rotor
-> - Số mẫu thực tế mỗi file: **~1,000,000 mẫu** ÷ **50,000 Hz** = **~20 giây** ✅ (khớp với trục thời gian trong ảnh)
+### 3. Healthy vs. Faulty Comparison Table (Steady-State)
 
-### So Sánh Cặp Healthy–Faulty (cùng điều kiện)
-
-| Cặp | Rung động | Dòng điện | Dấu hiệu lỗi rõ nhất |
-|:---:|-----------|-----------|----------------------|
-| F1 vs F6 | Biên độ tăng ~68%, nhiễu HF | Modulation nhỏ | Rung động |
-| F2 vs F7 | Tăng mạnh sau mất pha | Dòng cao hơn, méo hơn | Dòng điện |
-| F3 vs F8 | Tăng ~60%, không đều hơn | Dòng tăng ~47%, modulation | Cả hai |
-| F4 vs F9 | Tăng ~95%, nhiều thành phần | Dòng tăng ~43%, transient dài | Cả hai |
-| F5 vs F10 | Gần như bằng nhau | I2 mất cân bằng rõ hơn | Dòng điện |
-
----
-
-> **Vị trí ảnh gốc:** `E:\Dr Liou - Multi modal\New folder\27216219\File N_acc/cur/voltage.png`  
-> **Tổng số ảnh:** 30 file (3 nhóm × 10 file)
+| Case | Vibration Level (x_std) | Current Level (I1_rms) | Primary Diagnostic Marker |
+|:---:|------------------------|------------------------|---------------------------|
+| **F1 vs F6** (No Load) | Increases by ~68% | Almost identical | Vibration amplitude & high-frequency noise |
+| **F2 vs F7** (Phase Rem.)| Increases significantly | Increases by ~61% | Post-event current asymmetry and distortion |
+| **F3 vs F8** (0.4 Nm) | Increases by ~60% | Increases by ~47% | Current amplitude modulation & vibration slip frequency |
+| **F4 vs F9** (0.8 Nm) | Increases by ~95% | Increases by ~38% | Intense current modulation & very high vibration levels |
+| **F5 vs F10** (1-Ph Disc)| Low (no rotation) | Distortion present | Current asymmetry (phase B = 0 A) |
