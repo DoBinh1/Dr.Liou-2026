@@ -21,7 +21,7 @@
 * **Running Period (>8 s):** x oscillates ±0.03 g, y ±0.04 g, Z fluctuates between 0.95 and 1.05 g.
 * **Observation:** The signals are stable with no abnormal impulses, indicating normal baseline operation.
 
-![File 1 – Accelerometer](27216219/File 1_acc.png)
+![File 1 – Accelerometer](27216219/File%201_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Idle Period (0–8 s):** All three phases are 0 A.
@@ -29,14 +29,14 @@
 * **Running Period (>8 s):** Sinusoidal waves with small amplitude (~0.1 A peak) as the motor runs without mechanical load.
 * **Observation:** The three phases are well-balanced with equal peak values.
 
-![File 1 – Current](27216219/File 1_cur.png)
+![File 1 – Current](27216219/File%201_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Idle Period (0–8 s):** Voltage is 0 V.
 * **Running Period (>8 s):** Balanced three-phase sinusoidal voltage at ±380 V peak, shifted by 120°.
 * **Observation:** The voltage remains extremely stable throughout the running phase, indicating a clean power supply.
 
-![File 1 – Voltage](27216219/File 1_voltage.png)
+![File 1 – Voltage](27216219/File%201_voltage.png)
 
 ---
 
@@ -45,17 +45,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Vibration levels are identical to File 1 before the phase removal event. Once a phase is disconnected during operation, vibration amplitudes increase due to the unbalanced magnetic pull (UMP) causing rotating asymmetry.
 
-![File 2 – Accelerometer](27216219/File 2_acc.png)
+![File 2 – Accelerometer](27216219/File%202_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Normal startup at ~8 s. When one phase is disconnected during operation, the current in the disconnected phase drops to 0 A, while the remaining two phases experience a sharp increase in current to compensate for the load, showing severe asymmetry and waveform distortion.
 
-![File 2 – Current](27216219/File 2_cur.png)
+![File 2 – Current](27216219/File%202_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Shows the exact moment of the phase disconnection. The disconnected phase's voltage drops or distorts, while the other two phases maintain grid voltage.
 
-![File 2 – Voltage](27216219/File 2_voltage.png)
+![File 2 – Voltage](27216219/File%202_voltage.png)
 
 ---
 
@@ -64,17 +64,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Vibration amplitudes are slightly larger than File 1 due to the mechanical load: x oscillates ±0.05 g, y ±0.07 g. The signal remains stable and periodic, characteristic of a healthy motor under load.
 
-![File 3 – Accelerometer](27216219/File 3_acc.png)
+![File 3 – Accelerometer](27216219/File%203_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Startup transient is visible at ~8 s. The steady-state current is higher than File 1 (~0.44 A peak), reflecting the active mechanical torque. The phases remain balanced.
 
-![File 3 – Current](27216219/File 3_cur.png)
+![File 3 – Current](27216219/File%203_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Stable three-phase sinusoidal voltage at ±380 V peak, unaffected by the mechanical load.
 
-![File 3 – Voltage](27216219/File 3_voltage.png)
+![File 3 – Voltage](27216219/File%203_voltage.png)
 
 ---
 
@@ -83,17 +83,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Displays the largest vibration in the Healthy group: x ±0.06 g, y ±0.07 g. The amplitude increases proportionally with the load. The signal remains periodic and stable.
 
-![File 4 – Accelerometer](27216219/File 4_acc.png)
+![File 4 – Accelerometer](27216219/File%204_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Steady-state current peaks at ~0.7 A, which is the highest in the Healthy group. The startup transient peaks at ~2.5 A. Waveforms are sinusoidal and balanced.
 
-![File 4 – Current](27216219/File 4_cur.png)
+![File 4 – Current](27216219/File%204_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Unaffected by the heavy load, demonstrating a stiff grid supply.
 
-![File 4 – Voltage](27216219/File 4_voltage.png)
+![File 4 – Voltage](27216219/File%204_voltage.png)
 
 ---
 
@@ -102,17 +102,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Signals are flat (~0 g) before and after the startup command. Because one phase is missing from the start, the motor cannot generate a rotating magnetic field and fails to rotate, resulting in no mechanical vibration.
 
-![File 5 – Accelerometer](27216219/File 5_acc.png)
+![File 5 – Accelerometer](27216219/File%205_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** No startup current inrush is observed. The disconnected phase carries 0 A, and the remaining two phases carry a very small, distorted current (~0.05 A). The motor stands still.
 
-![File 5 – Current](27216219/File 5_cur.png)
+![File 5 – Current](27216219/File%205_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Two phases show normal voltage, while the disconnected phase stays at ~0 V, confirming a pre-start open-circuit fault on phase B.
 
-![File 5 – Voltage](27216219/File 5_voltage.png)
+![File 5 – Voltage](27216219/File%205_voltage.png)
 
 ---
 
@@ -121,17 +121,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Comparison with File 1 (Healthy No-Load):** The vibration amplitude is visibly larger: x oscillates ±0.05 g (compared to ±0.03 g in File 1), representing a ~68% increase. A dense high-frequency noise is present in the steady-state, which is an early mechanical signature of the rotor fault.
 
-![File 6 – Accelerometer](27216219/File 6_acc.png)
+![File 6 – Accelerometer](27216219/File%206_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Inrush transient occurs at ~8 s, but takes longer to settle compared to File 1. The steady-state current is slightly higher than File 1, and subtle amplitude modulations are visible—a characteristic signature of broken rotor bars (BRB).
 
-![File 6 – Current](27216219/File 6_cur.png)
+![File 6 – Current](27216219/File%206_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Identical to File 1, indicating that the rotor fault does not distort the grid voltage.
 
-![File 6 – Voltage](27216219/File 6_voltage.png)
+![File 6 – Voltage](27216219/File%206_voltage.png)
 
 ---
 
@@ -140,17 +140,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** The combined effect of the rotor fault and phase removal produces significantly higher vibration levels than File 2 (Healthy phase removal). After the disconnection, the vibration becomes highly irregular and intense.
 
-![File 7 – Accelerometer](27216219/File 7_acc.png)
+![File 7 – Accelerometer](27216219/File%207_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** The current amplitude is higher than in File 2. Phase asymmetry is more pronounced, and the waveforms show prominent high-frequency harmonic distortion after the phase removal event.
 
-![File 7 – Current](27216219/File 7_cur.png)
+![File 7 – Current](27216219/File%207_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Identical to File 2; clearly marks the phase disconnection event.
 
-![File 7 – Voltage](27216219/File 7_voltage.png)
+![File 7 – Voltage](27216219/File%207_voltage.png)
 
 ---
 
@@ -159,17 +159,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Comparison with File 3 (Healthy 0.4 Nm):** Vibration is ~60% larger. The rotor fault modulates the vibration envelope at the slip frequency, creating a non-periodic, modulated waveform with dense high-frequency content.
 
-![File 8 – Accelerometer](27216219/File 8_acc.png)
+![File 8 – Accelerometer](27216219/File%208_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** RMS current is ~47% higher than File 3. The rotor fault degrades efficiency, requiring more current to produce the same torque. Visible low-frequency beating (amplitude modulation) is present, which is the classic broken rotor bar signature.
 
-![File 8 – Current](27216219/File 8_cur.png)
+![File 8 – Current](27216219/File%208_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Normal balanced ±380 V grid voltage.
 
-![File 8 – Voltage](27216219/File 8_voltage.png)
+![File 8 – Voltage](27216219/File%208_voltage.png)
 
 ---
 
@@ -178,17 +178,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Exhibits the highest vibration level in the entire dataset: x ±0.07 g, y ±0.06 g (nearly 95% higher than File 4). The signal contains multiple overlapping frequency components, and the startup transient is prolonged.
 
-![File 9 – Accelerometer](27216219/File 9_acc.png)
+![File 9 – Accelerometer](27216219/File%209_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Peak steady-state current reaches ~1.0 A (compared to ~0.7 A in File 4). The startup inrush reaches ~3 A and takes 3–4 seconds to stabilize. Strong amplitude modulation is visible, showing that the broken rotor bar fault is highly aggravated under heavy loads.
 
-![File 9 – Current](27216219/File 9_cur.png)
+![File 9 – Current](27216219/File%209_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** The voltage remains stable at ±380 V, proving that the high current and prolonged startup are caused by the motor fault rather than a voltage sag.
 
-![File 9 – Voltage](27216219/File 9_voltage.png)
+![File 9 – Voltage](27216219/File%209_voltage.png)
 
 ---
 
@@ -197,17 +197,17 @@
 ### 1. Accelerometer (x, y, Z)
 * **Observation:** Similar to File 5, the vibration is mostly flat since the motor cannot rotate. However, tiny fluctuations are slightly larger than File 5 due to the broken rotor bars reacting to the single-phase field.
 
-![File 10 – Accelerometer](27216219/File 10_acc.png)
+![File 10 – Accelerometer](27216219/File%2010_acc.png)
 
 ### 2. Current (I1, I2, I3)
 * **Observation:** Phase B carries 0 A. The other two phases carry unbalanced currents. The asymmetry is more severe than File 5 due to the combined effect of the rotor fault and the disconnected phase. The motor stands still and acts as a pure inductive load.
 
-![File 10 – Current](27216219/File 10_cur.png)
+![File 10 – Current](27216219/File%2010_cur.png)
 
 ### 3. Voltage (V1, V2, V3)
 * **Observation:** Identical to File 5; confirms phase B is disconnected from startup.
 
-![File 10 – Voltage](27216219/File 10_voltage.png)
+![File 10 – Voltage](27216219/File%2010_voltage.png)
 
 ---
 
